@@ -21,7 +21,7 @@ template <typename T> class ListLinked : public List<T> {
 		// Destructor que libera la memoria dinámica reservada por los nodos Node<T> que componen la secuencia
 		~ListLinked(){
 			
-			do{
+			while(first != nullptr){	
 				// 1) Situamos un puntero aux que apunte al nodo first->next
 				Node<T>* aux = first->next;
 
@@ -31,8 +31,8 @@ template <typename T> class ListLinked : public List<T> {
 				// 3) Actualizar first para que apunte al mismo nodo que aux (bypass)
 				first = aux;
 
-				// 4) Repetir los pasos 1-3 (del 1 al 3) hasta que se alcance el final de la secuencia enlazada
-			} while(first != nullptr);	
+				// 4) Repetir los pasos 1-3 (del 1 al 3) hasta que se alcance el final de la secuencia enlazada (while del principio)
+			} 
 		}
 		
 		// Sobrecarga del operador especial [] -> devuelve el elemento situado en la posición pos
@@ -47,7 +47,8 @@ template <typename T> class ListLinked : public List<T> {
 	
 				if(aux != nullptr){		// Si hemos encontrado la posicion del nodo sin haber llegado al final de la secuencia
 					return aux->data;	// Elemento situado en la posición pos
-				} 
+				} else
+					return -1;
 
 			} else{
 				throw std::out_of_range("Fuera del rango del array");
@@ -90,7 +91,7 @@ template <typename T> class ListLinked : public List<T> {
 
 		// Inserta el elemento e en la posición pos del array + lanza excepcion si pos está fuera de los limites del array dinámico
 		void insert(int pos, T e) override{
-			if(pos >= 0 && pos < n){
+			if(pos >= 0 && pos <= n){
 			
 				// Nos creamos dos nodos prev y aux que vayan avanzando en los nodos de la secuencia enlazada
 				// Al final del todo, aux apuntará al nodo que ocupa la posición de inversión y prev al nodo precedente (el de antes) del que apunta aux
@@ -150,6 +151,8 @@ template <typename T> class ListLinked : public List<T> {
 					aux = aux->next;
 					i++;
 				}
+
+				T valor_eliminado = aux->data;
 				
 				// Si hemos encontrado la posición pos y aux no llega a apuntar a nullptr
 				if(aux != nullptr){
@@ -163,7 +166,9 @@ template <typename T> class ListLinked : public List<T> {
 
 					delete aux;		// Liberamos memoria
 					n--;
-				}
+					return valor_eliminado;
+				} else
+					return -1;
 
 
 			} else{
@@ -186,9 +191,9 @@ template <typename T> class ListLinked : public List<T> {
 	
 				if(aux != nullptr){		// Si hemos encontrado la posicion del nodo sin haber llegado al final de la secuencia
 					return aux->data;	// Elemento situado en la posición pos
-				} 
-
-
+				} else
+					return -1;
+	
 			} else
 				throw std::out_of_range("Fuera del rango del array");
 
