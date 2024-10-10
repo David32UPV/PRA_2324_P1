@@ -23,7 +23,7 @@ template <typename T> class ListLinked : public List<T> {
 			
 			while(first != nullptr){	
 				// 1) Situamos un puntero aux que apunte al nodo first->next
-				Node<T>* aux = first->next;
+				Node<T>* aux = first->next;	
 
 				// 2) Liberar la memoria ocupada por el nodo al que apunta a first	
 				delete first;
@@ -45,13 +45,10 @@ template <typename T> class ListLinked : public List<T> {
 					i++;
 				}
 	
-				if(aux != nullptr){		// Si hemos encontrado la posicion del nodo sin haber llegado al final de la secuencia
-					return aux->data;	// Elemento situado en la posición pos
-				} else
-					return -1;
+				return aux->data;	// Elemento situado en la posición pos
 
 			} else{
-				throw std::out_of_range("Fuera del rango del array");
+				throw std::out_of_range("Fuera del rango del array: pos = " + std::to_string(pos));
 			}
 		}
 		
@@ -71,11 +68,11 @@ template <typename T> class ListLinked : public List<T> {
 					out << "  ";
 					out << aux->data;
 
-					aux = aux->next;
-					i++;
+					aux = aux->next;	
 					if(i != list.n -1){		// Si la posición del array i es distinto del ultimo elemento actual del array
 						out << "\n";
 					}
+					i++;
 
 				}
 
@@ -107,23 +104,21 @@ template <typename T> class ListLinked : public List<T> {
 				}
 				
 				// Si hemos encontrado la posición pos y aux no llega a apuntar a nullptr
-				if(aux != nullptr){
-					// Si queremos insertar al principio de la secuencia
-					if(aux == first){
-						first = new Node<T>(e, first);
-					}
-					// Si queremos insertar en cualquier otra posición
-					else{
-						prev->next = new Node<T>(e, aux);	// Le paso el elemento que quiero en la posicion pos y el nodo que apunta al nodo siguiente
-					}
-
-					n++;
-
+				
+				// Si queremos insertar al principio de la secuencia
+				if(aux == first){
+					first = new Node<T>(e, first);
+				}
+				// Si queremos insertar en cualquier otra posición
+				else{
+					prev->next = new Node<T>(e, aux);	// Le paso el elemento que quiero en la posicion pos y el nodo que apunta al nodo siguiente
 				}
 
+				n++;
 
 			} else
-				throw std::out_of_range("Fuera del rango del array");
+				throw std::out_of_range("Fuera del rango del array: pos = " + std::to_string(pos));
+
 
 		}
 		
@@ -152,27 +147,24 @@ template <typename T> class ListLinked : public List<T> {
 					i++;
 				}
 
-				T valor_eliminado = aux->data;
 				
-				// Si hemos encontrado la posición pos y aux no llega a apuntar a nullptr
-				if(aux != nullptr){
-					// Eliminamos el nodo que está al principio de la secuencia
-					if(aux == first){
-						first = first->next; 		// bypass
-					}
-					else{
-						prev->next = aux->next;		 // bypass
-					}
-
-					delete aux;		// Liberamos memoria
-					n--;
-					return valor_eliminado;
-				} else
-					return -1;
+				// Eliminamos el nodo que está al principio de la secuencia
+				if(aux == first){
+					first = first->next; 		// bypass
+				}
+				else{
+					prev->next = aux->next;		 // bypass
+				}
+				
+				// Hay que declarar valor eliminado despues del bucle y del bypass porque si lo ponemos antes del bucle solo me eiminará el primer elemento (-5)
+				T valor_eliminado = aux->data;
+				delete aux;
+				n--;
+				return valor_eliminado;
 
 
 			} else{
-				throw std::out_of_range("Fuera del rango del array");
+				throw std::out_of_range("Fuera del rango del array: pos = " + std::to_string(pos));
 
 			}
 		}
@@ -188,14 +180,12 @@ template <typename T> class ListLinked : public List<T> {
 					aux = aux->next;
 					i++;
 				}
-	
-				if(aux != nullptr){		// Si hemos encontrado la posicion del nodo sin haber llegado al final de la secuencia
-					return aux->data;	// Elemento situado en la posición pos
-				} else
-					return -1;
-	
+
+				return aux->data;	// Elemento situado en la posición pos
+
 			} else
-				throw std::out_of_range("Fuera del rango del array");
+				throw std::out_of_range("Fuera del rango del array: pos = " + std::to_string(pos));
+
 
 		}
 		
