@@ -11,7 +11,7 @@ Imagina que tienes dos archivos .h que incluyen el mismo archivo de encabezado c
 
 // La interfaz determinará un conjunto de operaciones básicas que se pueden realizar sobre una forma o figura concreta
 // Es una clase abstracta. Podemos hacer funciones tanto virtuales puras como clásicas (de toda la vida)
-template <typename T> class Shape{
+class Shape{
 	
 	// Atributos protegidos -> Accesibles desde clases derivadas (a diferencia de private)
 	protected:		
