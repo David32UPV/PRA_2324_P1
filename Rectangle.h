@@ -36,7 +36,8 @@ class Rectangle : public Shape{
 		Point2D operator[](int ind) const;
 
 		// Método virtual -> Modifica los vértices del rectángulo. Si los vértices no conforman un rectángulo válido, devuelve std::invalid_argument
-		virtual void set_vertices(Point2D* vertices);
+		virtual void set_vertices(Point2D* vertices);	// Lo ponemos virtual para que sea polimórfico pues Square lo reescribirá
+
 
 		// Sobrecarga del operador = (asignación de copia). Permitirá hacer una copia segura de rectángulos. 
 		Rectangle& operator=(const Rectangle &r);
@@ -60,7 +61,7 @@ class Rectangle : public Shape{
 
 		// Flujo: movimiento de datos desde un origen hacia un destino (e.g. mover los datos desde el programa hacia la pantalla[cout <<])
 		// En C++, los flujos se manejan a través de clases como std::ostream (flujo de salida[imprimir en consola]) y std::istream (flujo de entrada[leer del teclado])
-		void print() override;
+		virtual void print() override;		// Lo ponemos virtual para que sea polimórfico pues Square lo reescribirá
 };
 
 #endif
