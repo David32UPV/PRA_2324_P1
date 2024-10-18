@@ -46,7 +46,11 @@ class Circle : public Shape {
 		// Traslada la figura sobre el espacio de representación, aplicando los incrementos de X e Y proporcionados.
 		void translate(double incX, double incY) override;
 
-		// Imprimirá por pantalla información básica sobre la figura.
+		// Imprimirá por pantalla información básica sobre la figura -> Lo modificamos para que acepte un flujo de salida y podamos llamar a print() desde operator<<
+		// Ahora print puede imprimir en cualquier flujo, incluido el que se pase al operador <<
+
+		// Flujo: movimiento de datos desde un origen hacia un destino (e.g. mover los datos desde el programa hacia la pantalla[cout <<])
+		// En C++, los flujos se manejan a través de clases como std::ostream (flujo de salida[imprimir en consola]) y std::istream (flujo de entrada[leer del teclado])
 		void print() override;
 
 };
