@@ -11,6 +11,7 @@ class Square : public Rectangle{
 		/*Comprueba, a partir de un array de 4 objetos Point2D proporcionado como parámetro, si esos vértices conforman un cuadrado válido.*/
 		static bool check(Point2D* vertices);
 
+	public:
 		/*Constructor por defecto. Creará un cuadrado con el color que esté establecido por defecto, y los vértices v0=(-1,1); v1=(1,1), v2=(1,-1), y v3=(-1,-1).*/
 		Square();
 		
