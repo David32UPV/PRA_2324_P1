@@ -2,6 +2,7 @@
 #include <iostream>
 #include <ostream>
 #include "Rectangle.h"
+#include "Shape.h"
 
 class Square : public Rectangle{
 

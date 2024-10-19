@@ -31,7 +31,7 @@ Rectangle::Rectangle() : Shape(){
 Rectangle::Rectangle(std::string color, Point2D* vertices) : Shape(color) {
 	
 	// Comprobar si los vértices conforman un rectángulo = Si check es false
-	if(!check){
+	if(!check(vertices)){
 		throw std::invalid_argument("¡¡Los vértices no conforman un rectángulo!!");
 	}
 
@@ -83,7 +83,7 @@ Point2D Rectangle::operator[](int ind) const{
 
 // Método virtual -> Modifica los vértices del rectángulo. Si los vértices no conforman un rectángulo válido, devuelve std::invalid_argument
 void Rectangle::set_vertices(Point2D* vertices){
-	if(!check){
+	if(!check(vertices)){
 		throw std::invalid_argument("¡¡Los vértices no conforman un rectángulo!!");
 	}
 

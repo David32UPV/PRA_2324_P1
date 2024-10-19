@@ -22,6 +22,9 @@ Circle.o: Circle.h Circle.cpp
 Rectangle.o: Rectangle.h Rectangle.cpp
 	g++ -c Rectangle.cpp
 
+Square.o: Square.h Square.cpp
+	g++ -c Square.cpp
+
 bin/testPoint2D: testPoint2D.cpp Point2D.o
 	g++ -c testPoint2D.cpp
 	mkdir -p bin
@@ -37,6 +40,10 @@ bin/testRectangle: testRectangle.cpp Rectangle.o Shape.o Point2D.o
 	mkdir -p bin
 	g++ -o bin/testRectangle testRectangle.o Rectangle.o Shape.o Point2D.o
 
+bin/testSquare: testSquare.cpp Square.o Rectangle.o Shape.o Point2D.o
+	g++ -c testSquare.cpp
+	mkdir -p bin
+	g++ -o bin/testSquare testSquare.o Square.o Rectangle.o Shape.o Point2D.o
 
 clean:
 	rm -rf *.o *.gch bin 2>/dev/null || true
