@@ -20,12 +20,12 @@ class Square : public Rectangle{
 		// Sobrecarga global del operador <<
 		friend std::ostream& operator<<(std::ostream &out, const Square &square);
 
-		// Debemos declarar las funciones que se van a sobreescribir (override) en el .cpp de esta clase
+		/*** Debemos declarar las funciones que se van a sobreescribir (override) en el .cpp de esta clase ***/
 
 		// Método virtual -> Modifica los vértices del cuadrado. Si los vértices no conforman un rectángulo válido, devuelve std::invalid_argument
 		virtual void set_vertices(Point2D* vertices);
 
 		// Imprimirá por pantalla información básica sobre la figura
-		virtual void print() override;
+		virtual void print();
 
 };
