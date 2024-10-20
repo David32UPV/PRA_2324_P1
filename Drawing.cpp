@@ -45,7 +45,7 @@ double Drawing::get_area_all_circles(){
 	double area = 0.0;
 	for(int i = 0; i < shapes->size(); i++){
 		// Hacemos dyanmic_cast para convertir punteros (*) o referencias(&) entre tipos de datos polimórficos de manera segura	
-		// Si shapes[i] apunta a un objeto de tipo Circle, el cast será exitoso y se asignará un puntero válido a circle, puediendo obtener el área de los circle
+		// Si shapes->get(i) apunta a un objeto de tipo Circle, el cast será exitoso y se asignará un puntero válido a circle, puediendo obtener el área de los circle
 		if(Circle* circle = dynamic_cast<Circle*>(shapes->get(i))){
 			area += circle->area();
 		}
@@ -57,7 +57,7 @@ double Drawing::get_area_all_circles(){
 // Mueve todos los cuadrados del dibujo, aplicando los incrementos de X e Y proporcionados.
 void Drawing::move_squares(double incX, double incY){
 	for(int i = 0; i < shapes->size(); i++){
-		// Si shapes[i] apunta a un objeto de tipo Square, el cast será exitoso y se asignará un puntero válido a square, puediendo trasladar los vértices de los square
+		// Si shapes->get(i) apunta a un objeto de tipo Square, el cast será exitoso y se asignará un puntero válido a square, puediendo trasladar los vértices de los square
 		if(Square* square = dynamic_cast<Square*>(shapes->get(i))){
 			square->translate(incX, incY);	
 		}
