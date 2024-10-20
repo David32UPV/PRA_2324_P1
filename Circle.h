@@ -1,3 +1,6 @@
+#ifndef CIRCLE_H
+#define CIRCLE_H
+
 #include <iostream>
 #include <ostream>
 #include "Shape.h"
@@ -54,3 +57,5 @@ class Circle : public Shape {
 		void print() override;
 
 };
+
+#endif

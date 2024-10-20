@@ -2,6 +2,8 @@
 #include <iostream>
 #include <ostream>
 #include "Square.h"
+#include "Circle.h"
+#include "Rectangle.h"
 #include "Shape.h"
 #include "List.h"
 #include "ListArray.h"
@@ -35,4 +37,5 @@ class Drawing{
 		
 		// Mueve todos los cuadrados del dibujo, aplicando los incrementos de X e Y proporcionados.
 		void move_squares(double incX, double incY);
+
 };

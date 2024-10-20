@@ -1,3 +1,6 @@
+#ifndef SQUARE_H
+#define SQUARE_H
+
 #include <stdexcept>
 #include <iostream>
 #include <ostream>
@@ -31,3 +34,5 @@ class Square : public Rectangle{
 		virtual void print();
 
 };
+
+#endif 
